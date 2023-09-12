@@ -1,66 +1,49 @@
-const currentJogadores = document.querySelector(".currentJogadores");
+let calcular = function(){
 
-let marcar;
-let jogadores = "X";
+  let nome = document.getElementById("nome").value
 
-let positions = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-  [1, 4, 7],
-  [2, 5, 8],
-  [3, 6, 9],
-  [1, 5, 9],
-  [3, 5, 7],
-];
+  let idade = parseFloat(document.getElementById("idade").value)
 
-function iniciar() {
-    marcar = [];
+  let sexo = (document.getElementById("sexo").value)
 
-  currentJogadores.innerHTML = `JOGADOR DA VEZ: ${jogadores}`;
+  let altura = parseFloat(document.getElementById("altura").value)
 
-  document.querySelectorAll(".velha button").forEach((item) => {
-    item.innerHTML = "";
-    item.addEventListener("click", newMove);
-  });
-}
+  let peso = parseFloat(document.getElementById("peso").value)
 
-iniciar();
-
-function newMove(e) {
-  const index = e.target.getAttribute("data-i");
-  e.target.innerHTML = jogadores;
-  e.target.removeEventListener("click", newMove);
-  marcar[index] = jogadores;
-
-  setTimeout(() => {
-    checar();
-  }, [100]);
-
-  jogadores = jogadores === "X" ? "O" : "X";
-  currentJogadores.innerHTML = `Vez do jogador: ${jogadores}`;
-}
-
-function checar() {
-  let jogadoresLastMove = jogadores === "X" ? "O" : "X";
-
-  const items = marcar
-    .map((item, i) => [item, i])
-    .filter((item) => item[0] === jogadoresLastMove)
-    .map((item) => item[1]);
-
-  for (pos of positions) {
-    if (pos.every((item) => items.includes(item))) {
-      document.write("O jogador '" + jogadoresLastMove + "' venceu");
-      iniciar();
-      return;
-    }
+  let IMC = peso/(altura*altura)
+  
+  saida = document.getElementById("resultado")
+    
+  if(IMC < 18.5){ 
+    saida.innerHTML = `${nome} ${idade}  ${sexo}  ${altura}   Você esta abaixo do peso normal`
   }
-
-  if (marcar.filter((item) => item).length === 9) {
-    document.write("ops, empatou legal");
-    iniciar();
-    return;
-
+  
+  else{
+    if( ( IMC >= 18.5) && (IMC < 24.9) ) {
+      saida.innerHTML = `${nome} ${idade}  ${sexo}  ${altura}  Você esta no peso normal`
+    }
+      
+    else{
+      if( (IMC >= 25) && (IMC <  29.9) ) {
+        saida.innerHTML =  `${nome} ${idade}  ${sexo}  ${altura}  Excesso de peso`
+      }
+        
+      else{
+        if( (IMC >= 30 ) && (IMC < 34.9) ){
+          saida.innerHTML =  `${nome} ${idade}  ${sexo}  ${altura}    Você esta com obesidade classe I`
+        }
+          
+        else{
+          if( (IMC >= 35) && (IMC < 39.9) ){
+            saida.innerHTML =  `${nome} ${idade}  ${sexo}  ${altura}    Você esta com obesidade classe II`
+          }
+          else{
+            if( (IMC >= 40) ){
+              saida.innerHTML = `${nome} ${idade}  ${sexo}  ${altura}    Você esta com obesidade grau III`
+          }
+          }
+        }
+      }
+    }    
   }
 }
