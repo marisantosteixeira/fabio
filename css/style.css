@@ -3,7 +3,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("/images/img2.png");
+    background-color: black;
+
 }
 *{
     margin: 0;
