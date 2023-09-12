@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css"  media="screen" href="/css/style.css">
     <title>fabio</title>
 </head>
 <body>
     <main>
-        <h1>JOGO DA VELHA DA MARI</h1>
-        <hr />
-        <div class="velha">
-          <button data-i="1"></button>
-          <button data-i="2"></button>
-          <button data-i="3"></button>
-          <button data-i="4"></button>
-          <button data-i="5"></button>
-          <button data-i="6"></button>
-          <button data-i="7"></button>
-          <button data-i="8"></button>
-          <button data-i="9"></button>
-        </div>
-        <h2 class="currentJogadores"></h2>
-      </main>
+      <fieldset>
+    <h1>Calcule seu IMC</h1>
+  
+    <p> Entre com seu nome: </p> 
+    <input type="text" id="nome" placeholder="Insira seu nome">
+
+    <p> Entre com a sua idade: </p>
+    <input type="number" id="idade" placeholder="Insira sua idade">
+
+    <p> Entre com seu sexo: </p>
+    <input type="text" id="sexo" placeholder="Insira seu sexo">
+
+    <p>Entre com a sua altura: </p>
+    <input type="number" id="altura"placeholder="Insira sua altura">
+    
+    <p>Entre com a seu peso: </p>
+    <input type="number" id="peso" placeholder="Insira seu peso">
+  
+    <br>
+    <button onclick="calcular()">Calcular</button>
+    <h2>Resultado:</h2>
+    <h3 id="resultado"></h3>
+</fieldset>
+   
     <script src="js/script.js"></script>
 </body>
 </html>
